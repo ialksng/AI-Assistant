@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1E90FF;
+            padding: 20px;
+            color: #333;
+        }
+        #frame {
+            background-color: #00BFFF;
+            border: 3px solid;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+        #frame img {
+            max-width: 100%;
+        }
+        #output {
+            background-color: #ADD8E6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 100px;
+            overflow-y: auto;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+            resize: none;
+            height: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            background-color: #ADD8E6;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <h1>AlphaBot</h1>
+        <img src="{{ url_for('static', filename='AlphaBot.png') }}">
+        <div id="output">
+            {% if user_val %}
+                <p><strong>User:</strong> {{ user_val }}</p>
+            {% endif %}
+            {% if bot_val %}
+                <p><strong>Bot:</strong> {{ bot_val }}</p>
+            {% endif %}
+        </div>
+        <form method="post">
+            <textarea name="user_input" placeholder="Type your message here..."></textarea>
+            <button type="submit" name="ask">ASK</button>
+            <button type="submit" name="delete">DELETE</button>
+            <button type="submit" name="send">SEND</button>
+        </form>
+    </div>
+</body>
+</html>
