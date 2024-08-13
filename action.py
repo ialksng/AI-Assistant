@@ -14,8 +14,8 @@ def Action(data):
         text2speech.text2speech("My name is AlphaBot, your AI Assistant")
         return "My name is AlphaBot, your AI Assistant"
     elif "hello" in user_data or "hi" in user_data:
-        text2speech.text2speech("Hi, How can I help you?")
-        return "Hi, How can I help you?"
+        text2speech.text2speech("Hi, How may I assist you?")
+        return "Hi, How may I assist you?"
     elif "time now" in user_data:
         current_time = datetime.datetime.now()
         Time = (str)(current_time) + " Hour :", (str)(current_time.minute) + "Minute" 

@@ -10,19 +10,23 @@ def home():
     bot_val = None
 
     if request.method == "POST":
-        if "ask" in request.form:
-            user_val = speech2text.speech2text()
-            bot_val = action.Action(user_val)
-        elif "send" in request.form:
-            user_val = request.form["user_input"]
-            bot_val = action.Action(user_val)
-        elif "delete" in request.form:
-            user_val = ""
-            bot_val = None
+        try:
+            if "ask" in request.form:
+                user_val = speech2text.speech2text()
+                bot_val = action.Action(user_val)
+            elif "send" in request.form:
+                user_val = request.form["user_input"]
+                bot_val = action.Action(user_val)
+            elif "delete" in request.form:
+                user_val = ""
+                bot_val = None
 
-        # If the bot requests to shut down
-        if bot_val == "Ok, shutting down!":
-            return render_template("shutdown.html")
+            # If the bot requests to shut down
+            if bot_val == "Ok, shutting down!":
+                return render_template("shutdown.html")
+
+        except Exception as e:
+            bot_val = f"An error occurred: {str(e)}"
 
     return render_template("index.html", user_val=user_val, bot_val=bot_val)
 
